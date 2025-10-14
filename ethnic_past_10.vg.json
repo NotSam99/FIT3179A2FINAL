@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 700,
+  "height": 400,
+  "title": {
+    "text": "Citizen Population by Ethnicity",
+    "fontSize": 24,
+    "font": "Times New Roman",
+    "fontWeight": "bold"
+  },
+  "params": [{
+    "name": "Year_selection",
+    "value": 2025,
+    "bind": {
+      "input": "select",
+      "options": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+      "labels": ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+      "name": "Select Year: "
+    }
+  }],
+  "data": {
+    "url": "data/ethnc_past10_pop.csv"
+  },
+  "transform": [
+    {"filter": "datum.ethnicity != 'Overall'"},
+    {"filter": "datum.date == Year_selection"},
+    {
+      "joinaggregate": [{
+        "op": "sum",
+        "field": "population",
+        "as": "total_population"
+      }]
+    },
+    {
+      "calculate": "datum.population/datum.total_population * 100",
+      "as": "percentage"
+    }
+  ],
+  "mark": {"type": "arc", "innerRadius": 50, "outerRadius": 150, "stroke": "#fff", "tooltip": true},
+  "encoding": {
+    "theta": {"field": "population", "type": "quantitative", "stack": true},
+    "color": {
+      "field": "ethnicity",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Malay", "Other Bumiputera", "Chinese", "Indian", "Others"],
+        "range": ["blue", "pink", "red", "purple", "orange"]
+      },
+      "legend": {"title": "Ethnicity"}
+    },
+    "tooltip": [
+      {"field": "ethnicity", "type": "nominal", "title": "Ethnicity"},
+      {"field": "population", "type": "quantitative", "title": "Population", "format": ",.0f"},
+      {"field": "percentage", "type": "quantitative", "title": "Percentage (%)", "format": ".1f"}
+    ]
+  }
+}

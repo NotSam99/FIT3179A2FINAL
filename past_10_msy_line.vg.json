@@ -1,0 +1,107 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "title": {
+    "text": "Population of the Past 10 Years (2016-2025)",
+    "fontSize": 24,
+    "font": "Times New Roman",
+    "fontWeight": "bold"
+  },
+  "data": {
+    "url": "data/pop_msy_past_10.csv"
+  },
+  "params": [{
+    "name": "Year_Filter",
+    "value": 2025,
+    "bind": {
+      "input": "range",
+      "min": 2016,
+      "max": 2025,
+      "step": 1,
+      "name": "Year Selection: "
+    }
+  }],
+  "transform": [
+    {"calculate": "year(datum.date)", "as": "year"},
+    {"filter": "datum.year <= Year_Filter"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "color": "#1f77b4"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {
+            "format": "%Y",
+            "tickCount": 10,
+            "grid": true
+          },
+          "scale": {
+            "domain": ["2016", "2025"]
+          }
+        },
+        "y": {
+          "field": "population",
+          "type": "quantitative",
+          "title": "Population",
+          "axis": {
+            "format": ",.0f",
+            "grid": true
+          },
+          "scale": {
+            "domain": [30000000, 35000000],
+            "nice": true
+          }
+        },
+        "tooltip": [
+          {"field": "date", "type": "temporal", "title": "Year", "format": "%Y"},
+          {"field": "population", "type": "quantitative", "title": "Population", "format": ",.0f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": 70,
+        "fontSize": 10,
+        "font": "sans-serif"
+      },
+      "transform": [
+        {
+          "filter": "year(datum.date) == 2020"
+        }
+      ],
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "population", "type": "quantitative"},
+        "text": {"value": "COVID-19 Impact"}
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "red",
+        "strokeDash": [4, 4]
+      },
+      "transform": [
+        {
+          "filter": "year(datum.date) == 2020"
+        }
+      ],
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "color": {"value": "red"}
+      }
+    }
+  ]
+}
+

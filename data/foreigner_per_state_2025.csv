@@ -1,0 +1,17 @@
+state,date,sex,age,ethnicity,population,total_population,region
+Johor,"2025-01-01","both","overall","other_noncitizen",385100,4205900,West Malaysia
+Kedah,"2025-01-01","both","overall","other_noncitizen",111000,2228000,West Malaysia
+Kelantan,"2025-01-01","both","overall","other_noncitizen",47100,1907700,West Malaysia
+Melaka,"2025-01-01","both","overall","other_noncitizen",91500,1052500,West Malaysia
+Negeri Sembilan,"2025-01-01","both","overall","other_noncitizen",73500,1244600,West Malaysia
+Pahang,"2025-01-01","both","overall","other_noncitizen",101900,1678200,West Malaysia
+Perak,"2025-01-01","both","overall","other_noncitizen",159500,2574900,West Malaysia
+Perlis,"2025-01-01","both","overall","other_noncitizen",11700,297800,West Malaysia
+Pulau Pinang,"2025-01-01","both","overall","other_noncitizen",179900,1803300,West Malaysia
+Sabah,"2025-01-01","both","overall","other_noncitizen",1040200,3759600,East Malaysia
+Sarawak,"2025-01-01","both","overall","other_noncitizen",126800,2529800,East Malaysia
+Selangor,"2025-01-01","both","overall","other_noncitizen",727900,7406800,West Malaysia
+Terengganu,"2025-01-01","both","overall","other_noncitizen",39000,1246900,West Malaysia
+Kuala Lumpur,"2025-01-01","both","overall","other_noncitizen",270700,2074100,West Malaysia
+Labuan,"2025-01-01","both","overall","other_noncitizen",11500,100900,East Malaysia
+Putrajaya,"2025-01-01","both","overall","other_noncitizen",3400,120800,West Malaysia

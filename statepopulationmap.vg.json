@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Population Density by State in 2025",
+    "fontSize": 24,
+    "font": "Times New Roman",
+    "fontWeight": "bold",
+    "subtitle": "Number of people per square kilometer",
+    "subtitleFontSize": 13,
+    "subtitlePadding": 10
+  },
+  "width": 700,
+  "height": 300,
+  "data": {
+    "url": "MalaysiaStatesTopo.json",
+    "format": {
+      "type": "topojson",
+      "feature": "MalaysiaStates"
+    }
+  },
+  "projection": {
+    "type": "equirectangular",
+    "center": [109, 4],
+    "scale": 1900
+  },
+  "transform": [
+    {
+      "lookup": "properties.shapeName",
+      "from": {
+        "data": {"url": "data/statepopulation.csv"},
+        "key": "state",
+        "fields": ["population", "area"]
+      }
+    },
+    {
+      "calculate": "datum.population / datum.area",
+      "as": "density"
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 0.5
+  },
+  "encoding": {
+    "color": {
+      "field": "density",
+      "type": "quantitative",
+      "scale": {
+        "type": "sequential",
+        "scheme": "greens",
+        "domain": [0, 2000]
+      },
+      "legend": {
+        "orient": "right",
+        "direction": "vertical",
+        "gradientLength": 250,
+        "gradientThickness": 15,
+        "title": "Population per km²",
+        "format": ",.0f",
+        "labelFontSize": 10,
+        "titleFontSize": 12,
+        "offset": 5,
+        "tickCount": 6,
+        "fillColor": "transparent"
+      }
+    },
+    "tooltip": [
+      {"field": "properties.shapeName", "type": "nominal", "title": "State"},
+      {"field": "density", "type": "quantitative", "format": ",.1f", "title": "Population Density"},
+      {"field": "population", "type": "quantitative", "format": ",.0f", "title": "Total Population"},
+      {"field": "area", "type": "quantitative", "format": ",.0f", "title": "Area (km²)"}
+    ]
+  },
+  "config": {
+    "view": {
+      "stroke": null,
+      "fill": "#95cbf7"
+    }
+  }
+}
