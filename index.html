@@ -14,13 +14,28 @@
       margin: 0 auto;
       padding: 20px;
     }
+    .title-container {
+      position: relative;
+      text-align: center;
+      margin: 40px auto;
+      max-width: 1200px;
+      padding: 0 20px;
+    }
+    .flag-image {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 100px;
+      width: auto;
+    }
     .main-title {
       font-family: 'Times New Roman', Times, serif;
       font-size: 42px;
       font-weight: 700;
       color: #1a1a1a;
-      text-align: center;
-      margin: 40px 0;
+      margin: 0;
+      padding: 0 100px;
     }
     .main-subtitle {
       font-family: 'Times New Roman', Times, serif;
@@ -88,7 +103,7 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .section-container {
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
     .metadata-section {
       background-color: white;
@@ -101,7 +116,7 @@
     .metadata-content {
       font-size: 14px;
       line-height: 1.6;
-      color: #666;
+      color: black;
       margin-top: 15px;
     }
     body {
@@ -112,11 +127,14 @@
 </head>
 <body>
   <div class="page-container">
-    <h1 class="main-title">Malaysia's Population Demographics</h1>
-    <p class="main-subtitle">A comprehensive analysis of population distribution, trends, and composition from 2016 to 2025</p>
+    <div class="title-container">
+      <img src="https://flagcdn.com/my.svg" class="flag-image">
+      <h1 class="main-title">Malaysia's Population Demographics</h1>
+    </div>
+    <p class="main-subtitle">Malaysia is a multiracial Southeast Asian country that is diverse in culture.<br> This visualization explores its demographic patterns from 2016 to 2025.</p>
 
     <div class="section-container">
-      <div class="section-banner">Population Growth Trend</div>
+      <div class="section-banner">Population Growth Trend (2016-2025)</div>
       <div class="row">
         <div class="chart-container">
           <div id="line-chart"></div>
@@ -124,23 +142,23 @@
         <div class="text-container">
           <p class="chart-description">
             For the past decade, Malaysia has experienced steady population growth.
-            However, there was a decline in population from 2019 to 2020, likely due to the Covid-19 pandemic.
+            However, there was a <b>decline</b> in population from 2019 to 2020, likely due to the <span style="color: red;">Covid-19</span> pandemic.
           </p> 
         </div>
       </div>
     </div>
 
     <div class="section-container">
-      <div class="section-banner">State Population Distribution</div>
+      <div class="section-banner">State Population Distribution (2025)</div>
       <div class="row">
         <div class="chart-container">
           <div id="map"></div>
         </div>
         <div class="text-container">
           <p class="chart-description">
-            The region with the highest population density is Kuala Lumpur, the capital city of Malaysia.
-            The state with the lowest population density is Sarawak, the biggest state in Malaysia by land area.
-            The state with the highest population is Penang, with a population of over 1.8 million people.
+            The <b>region</b> with the <b>highest</b> population density is <span style="color: red;">Kuala Lumpur</span>, the capital city of Malaysia.
+            The <b>state</b> with the <b>lowest</b> population density is <span style="color: green;">Sarawak</span>, the biggest state in Malaysia by land area.
+            The <b></b>state</b> with the <b>highest</b> population is <span style="color: teal;">Penang</span>, with a population of over 1.8 million people.
           </p>
         </div>
       </div>
@@ -154,8 +172,8 @@
         </div>
         <div class="text-container">
           <p class="chart-description">
-            The population shows a steady increase from the youngest age group (0–4) up to the 20–24 age group, which marks the peak. 
-            After this point, the population begins to decline gradually with each successive age group, indicating a youthful demographic structure with fewer individuals in older age brackets.
+            The population shows a steady <b>increase</b> from the youngest age group (0–4) up to the <span style="color: red;">(20–24)</span> age group, which marks the peak. 
+            After this point, the population begins to <b>decline</b> gradually with each successive age group, indicating a youthful demographic structure with fewer individuals in older age brackets.
           </p>
         </div>
       </div>
@@ -169,8 +187,8 @@
         </div>
         <div class="text-container">
           <p class="chart-description">
-            Malay population is the largest ethnic group in Malaysia, making up over half of the total population.
-            The Chinese and other Bumiputera (Indigenous) groups also constitute significant portions of the minority.
+            <span style="color: blue;">Malay</span> population is the largest ethnic group in Malaysia, making up over half of the total population.
+            The <span style="color: red;">Chinese</span> and <span style="color: pink;">other Bumiputera</span> (Indigenous) groups also constitute significant portions of the minority.
           </p>
         </div>
       </div>
@@ -184,26 +202,23 @@
         </div>
         <div class="text-container">
           <p class="chart-description">
-            The gender distribution in Malaysia shows a relatively balanced ratio between males and females over the past decade.
-            This visualization reveals the total population composition by gender from 2016 to 2025, highlighting the consistent growth
-            in both male and female populations while maintaining a near-equal distribution.
+            The gender distribution in Malaysia shows a relatively balanced ratio between <span style="color: rgb(43, 142, 209);">males</span> and <span style="color: hotpink;">females</span> over the past decade.
+            There is consistent growth in both male and female populations while maintaining a <b>near-equal</b> distribution.
           </p>
         </div>
       </div>
     </div>
 
     <div class="section-container">
-      <div class="section-banner">Citizen vs Non-Citizen Age Distribution (2025)</div>
+      <div class="section-banner">Citizen and Non-Citizen Age Distribution (2025)</div>
       <div class="row">
         <div class="chart-container">
           <div id="butterfly-chart"></div>
         </div>
         <div class="text-container">
           <p class="chart-description">
-            The population pyramid shows the age distribution of citizens and non-citizens in Malaysia for 2025.
-            Non-citizens (shown on the right) are concentrated in the working-age groups, particularly between 20-34 years old,
-            while citizens (shown on the left) have a more balanced distribution across age groups. This reflects Malaysia's
-            foreign worker demographics and immigration patterns.
+            <span style="color: darkorange;">Non-citizens</span> are concentrated in the <b>working-age</b> groups, particularly between 20-34 years old,
+            while <span style="color: rgb(43, 142, 209);">citizens</span> have a more balanced distribution across age groups.
           </p>
         </div>
       </div>

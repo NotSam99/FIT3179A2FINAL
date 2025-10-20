@@ -38,8 +38,8 @@
         "field": "ethnicity",
         "type": "nominal",
         "scale": {
-          "domain": ["Chinese", "Others", "Other Bumiputera", "Indian", "Malay"],
-          "range": ["red", "orange", "pink", "purple", "blue"]
+          "domain": ["Malay", "Chinese", "Indian", "Other Bumiputera", "Others"],
+          "range": ["blue", "red", "purple", "pink", "orange"]
         },
         "legend": {"title": "Ethnicity"}
       },
