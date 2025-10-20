@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 600,
+  "width": 700,
   "height": 400,
   "title": {
     "text": "Population of the Past 10 Years (2016-2025)",

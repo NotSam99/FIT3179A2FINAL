@@ -35,6 +35,16 @@
       align-items: flex-start;
       margin-bottom: 40px;
       gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @media (max-width: 1200px) {
+      .chart-container, .text-container {
+        flex: 0 1 100%;
+      }
+      .text-container {
+        max-width: 800px;
+      }
     }
     .chart-container {
       flex: 2;
@@ -42,15 +52,16 @@
       padding: 25px;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      min-width: 800px;
+      width: 100%;
+      max-width: 800px;
     }
     .text-container {
       flex: 1;
       padding: 20px;
+      width: 100%;
       max-width: 400px;
       display: flex;
       align-items: center;
-      min-height: 400px;
     }
     .chart-description {
       font-family: 'Inter', sans-serif;
@@ -117,6 +128,33 @@
         </p>
       </div>
     </div>
+
+    <div class="row">
+      <div class="chart-container">
+        <div id="stacked-chart"></div>
+      </div>
+      <div class="text-container">
+        <p class="chart-description">
+          The gender distribution in Malaysia shows a relatively balanced ratio between males and females over the past decade.
+          This visualization reveals the total population composition by gender from 2016 to 2025, highlighting the consistent growth
+          in both male and female populations while maintaining a near-equal distribution.
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="chart-container">
+        <div id="butterfly-chart"></div>
+      </div>
+      <div class="text-container">
+        <p class="chart-description">
+          The population pyramid shows the age distribution of citizens and non-citizens in Malaysia for 2025.
+          Non-citizens (shown on the right) are concentrated in the working-age groups, particularly between 20-34 years old,
+          while citizens (shown on the left) have a more balanced distribution across age groups. This reflects Malaysia's
+          foreign worker demographics and immigration patterns.
+        </p>
+      </div>
+    </div>
   </div>
   
   <script type="text/javascript">
@@ -130,6 +168,12 @@
       .then(console.log)
       .catch(console.warn);
     vegaEmbed('#donut-chart', 'ethnic_past_10.vg.json', {mode: "vega-lite"})
+      .then(console.log)
+      .catch(console.warn);
+    vegaEmbed('#stacked-chart', 'sex_2025_stack.vg.json', {mode: "vega-lite"})
+      .then(console.log)
+      .catch(console.warn);
+    vegaEmbed('#butterfly-chart', 'foreign_age_butterfly.vg.json', {mode: "vega-lite"})
       .then(console.log)
       .catch(console.warn);
   </script>

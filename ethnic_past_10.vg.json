@@ -36,22 +36,54 @@
       "as": "percentage"
     }
   ],
-  "mark": {"type": "arc", "innerRadius": 50, "outerRadius": 150, "stroke": "#fff", "tooltip": true},
-  "encoding": {
-    "theta": {"field": "population", "type": "quantitative", "stack": true},
-    "color": {
-      "field": "ethnicity",
-      "type": "nominal",
-      "scale": {
-        "domain": ["Malay", "Other Bumiputera", "Chinese", "Indian", "Others"],
-        "range": ["blue", "pink", "red", "purple", "orange"]
+  "layer": [{
+    "mark": {"type": "arc", "innerRadius": 50, "outerRadius": 150, "stroke": "#fff"},
+    "encoding": {
+      "theta": {"field": "population", "type": "quantitative", "stack": true},
+      "color": {
+        "field": "ethnicity",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Chinese", "Others", "Other Bumiputera", "Indian", "Malay"],
+          "range": ["red", "orange", "pink", "purple", "blue"]
+        },
+        "legend": {"title": "Ethnicity"}
       },
-      "legend": {"title": "Ethnicity"}
+      "tooltip": [
+        {"field": "ethnicity", "type": "nominal", "title": "Ethnicity"},
+        {"field": "population", "type": "quantitative", "title": "Population", "format": ",.0f"},
+        {"field": "percentage", "type": "quantitative", "title": "Percentage (%)", "format": ".1f"}
+      ]
+    }
+  },
+  {
+    "mark": {"type": "text", "align": "center", "fontSize": 16, "fontWeight": "bold"},
+    "encoding": {
+      "text": {"field": "total_population", "type": "quantitative", "format": ",.0f"}
+    }
+  },
+  {
+    "mark": {
+      "type": "text",
+      "radius": 100,
+      "fontSize": 16,
+      "fontWeight": "bold",
+      "color": "white",
+      "align": "center",
+      "baseline": "middle"
     },
-    "tooltip": [
-      {"field": "ethnicity", "type": "nominal", "title": "Ethnicity"},
-      {"field": "population", "type": "quantitative", "title": "Population", "format": ",.0f"},
-      {"field": "percentage", "type": "quantitative", "title": "Percentage (%)", "format": ".1f"}
-    ]
-  }
+    "encoding": {
+      "theta": {"field": "population", "type": "quantitative", "stack": true},
+      "text": {
+        "condition": {
+          "test": "datum.percentage > 2",
+          "field": "percentage",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "value": ""
+      },
+      "order": {"field": "ethnicity"}
+    }
+  }]
 }

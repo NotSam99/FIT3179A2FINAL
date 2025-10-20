@@ -1,0 +1,97 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 650,
+  "height": 400,
+  "title": "Population Distribution by Age Group and Citizenship Status (2025)",
+  "data": {
+    "url": "data/foreign_age_pop.csv"
+  },
+  "transform": [
+    {
+      "fold": ["Citizen", "Non-Citizen"],
+      "as": ["Category", "Population"]
+    },
+    {
+      "calculate": "datum.Category == 'Citizen' ? -datum.Population : datum.Population",
+      "as": "signed_population"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar"}
+    },
+    {
+      "transform": [{"filter": "datum.Category == 'Non-Citizen'"}],
+      "mark": {"type": "text", "align": "left", "dx": 5},
+      "encoding": {
+        "text": {"field": "Population", "format": ",.0f"},
+        "x": {"field": "signed_population", "type": "quantitative"},
+        "y": {"field": "Age", "type": "ordinal"},
+        "color": {"value": "black"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.Category == 'Citizen'"}],
+      "mark": {"type": "text", "align": "right", "dx": -5},
+      "encoding": {
+        "text": {"field": "Population", "format": ",.0f"},
+        "x": {"field": "signed_population", "type": "quantitative"},
+        "y": {"field": "Age", "type": "ordinal"},
+        "color": {"value": "black"}
+      }
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "Age",
+      "type": "ordinal",
+      "sort": [
+        "0-4", "5-9", "10-14", "15-19", "20-24", "25-29",
+        "30-34", "35-39", "40-44", "45-49", "50-54", "55-59",
+        "60-64", "65-69", "70-74", "75-79", "80-84", "85+"
+      ],
+      "axis": {
+        "grid": true,
+        "gridColor": "#DCDCDC",
+        "gridWidth": 0.5
+      },
+      "scale": {
+        "padding": 0.4
+      }
+    },
+    "x": {
+      "field": "signed_population",
+      "type": "quantitative",
+      "axis": {
+        "grid": false,
+        "domain": false,
+        "title": null,
+        "labels": false,
+        "ticks": false
+      },
+      "scale": {
+        "padding": 100
+      }
+    },
+    "color": {
+      "field": "Category",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Citizen", "Non-Citizen"],
+        "range": ["#4287f5", "#f58742"]
+      },
+      "legend": {
+        "orient": "right",
+        "title": "Citizenship Status"
+      }
+    },
+    "tooltip": [
+      {"field": "Age", "type": "ordinal", "title": "Age Group"},
+      {"field": "Category", "type": "nominal", "title": "Status"},
+      {"field": "Population", "type": "quantitative", "title": "Population", "format": ",.0f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null}
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 650,
+  "height": 400,
+  "title": "Population by Gender in Malaysia (2016-2025)",
+  "data": {
+    "url": "data/sex_past10_pop.csv"
+  },
+  "params": [{
+    "name": "gender_selection",
+    "select": {"type": "point", "fields": ["sex"]},
+    "bind": "legend"
+  }],
+  "transform": [
+    {
+      "filter": "datum.sex != 'Both'"
+    }
+  ],
+  "mark": {
+    "type": "bar"
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {
+        "labelAngle": 0,
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "population",
+      "type": "quantitative",
+      "title": "Population",
+      "stack": true,
+      "axis": {
+        "grid": true
+      }
+    },
+    "color": {
+      "field": "sex",
+      "type": "nominal",
+      "title": "Gender",
+      "scale": {
+        "domain": ["Male", "Female"],
+        "range": ["#4287f5", "#f542aa"]
+      },
+      "legend": {
+        "orient": "right"
+      }
+    },
+    "tooltip": [
+      {"field": "date", "type": "ordinal", "title": "Year"},
+      {"field": "sex", "type": "nominal", "title": "Gender"},
+      {"field": "population", "type": "quantitative", "title": "Population", "format": ",.0f"}
+    ],
+    "opacity": {
+      "condition": {"param": "gender_selection", "value": 1},
+      "value": 0.2
+    }
+  }
+}

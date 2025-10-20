@@ -21,8 +21,15 @@
   "height": 400,
   "layer": [
     {
-      "mark": {"type": "bar", "color": "#a3c4f3", "size": 6},
+      "mark": {"type": "bar", "size": 6},
       "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.age === '20-24'",
+            "value": "red"
+          },
+          "value": "darkgray"
+        },
         "y": {
           "field": "age",
           "type": "ordinal",
@@ -47,8 +54,15 @@
       }
     },
     {
-      "mark": {"type": "circle", "color": "#4361ee", "size": 100},
+      "mark": {"type": "circle", "size": 100},
       "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.age === '20-24'",
+            "value": "red"
+          },
+          "value": "darkgray"
+        },
         "y": {
           "field": "age",
           "type": "ordinal",
@@ -67,6 +81,35 @@
           {"field": "age", "title": "Age Group"},
           {"field": "population", "title": "Population", "format": ",d"}
         ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {"value": "Peak Age Group"},
+        "y": {
+          "field": "age",
+          "type": "ordinal",
+          "sort": [
+            "0-4", "5-9", "10-14", "15-19", "20-24", "25-29", "30-34",
+            "35-39", "40-44", "45-49", "50-54", "55-59", "60-64",
+            "65-69", "70-74", "75-79", "80+"
+          ]
+        },
+        "x": {"field": "population", "type": "quantitative"},
+        "opacity": {
+          "condition": {
+            "test": "datum.age === '20-24'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "color": {"value": "black"}
       }
     }
   ],

@@ -49,7 +49,7 @@
       "scale": {
         "type": "sequential",
         "scheme": "greens",
-        "domain": [0, 2000]
+        "domain": [0, 1000]
       },
       "legend": {
         "orient": "right",
@@ -61,7 +61,7 @@
         "labelFontSize": 10,
         "titleFontSize": 12,
         "offset": 5,
-        "tickCount": 6,
+        "tickCount": 4,
         "fillColor": "transparent"
       }
     },
