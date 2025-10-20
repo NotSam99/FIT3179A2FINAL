@@ -2,7 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": 650,
   "height": 400,
-  "title": "Population Distribution by Age Group and Citizenship Status (2025)",
   "data": {
     "url": "data/foreign_age_pop.csv"
   },

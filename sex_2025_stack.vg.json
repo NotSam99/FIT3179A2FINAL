@@ -2,7 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": 650,
   "height": 400,
-  "title": "Population by Gender in Malaysia (2016-2025)",
   "data": {
     "url": "data/sex_past10_pop.csv"
   },

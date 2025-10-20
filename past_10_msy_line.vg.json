@@ -1,13 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
-  "height": 400,
-  "title": {
-    "text": "Population of the Past 10 Years (2016-2025)",
-    "fontSize": 24,
-    "font": "Times New Roman",
-    "fontWeight": "bold"
-  },
+  "height": 300,
   "data": {
     "url": "data/pop_msy_past_10.csv"
   },

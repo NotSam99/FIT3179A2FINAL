@@ -10,7 +10,7 @@
     "subtitlePadding": 10
   },
   "width": 700,
-  "height": 300,
+  "height": 400,
   "data": {
     "url": "MalaysiaStatesTopo.json",
     "format": {

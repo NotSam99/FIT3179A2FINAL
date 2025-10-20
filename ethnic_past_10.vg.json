@@ -2,12 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
   "width": 700,
   "height": 400,
-  "title": {
-    "text": "Citizen Population by Ethnicity",
-    "fontSize": 24,
-    "font": "Times New Roman",
-    "fontWeight": "bold"
-  },
   "params": [{
     "name": "Year_selection",
     "value": 2025,

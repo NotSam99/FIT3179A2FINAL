@@ -11,12 +11,6 @@
       "as": "age_num"
     }
   ],
-  "title": {
-    "text": "Population by Age Group in 2025",
-    "fontSize": 24,
-    "font": "Times New Roman",
-    "fontWeight": "bold"
-  },
   "width": 700,
   "height": 400,
   "layer": [
